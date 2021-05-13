@@ -1,13 +1,17 @@
 import activityServices from './activityServices';
 import activityTemplate from './templates/activity.hbs';
-import eventsServices from './eventServices';
 import eventServices from './eventServices';
-// import eventsTemplate from './templates/events';
+import eventsTemplate from './templates/events.hbs';
+import './styles.scss';
 
+const eventsContainer = document.querySelector('#events_container');
 async function renderEvents() {
-  const event = await eventServices.getEvents();
-  console.log(event);
+  const events = await eventServices.getEvents();
+  console.log(events);
+  console.log(events._embedded.events);
+  eventsContainer.innerHTML = eventsTemplate(events._embedded.events);
 }
+renderEvents();
 
 const button = document.querySelector('#get_random_activity');
 const container = document.querySelector('#random_activity');

@@ -1,0 +1,18 @@
+#events_container {
+  display: flex;
+}
+
+.event-card {
+  display: flex;
+  width: 1005;
+  &:not(:last-child) {
+    margin-right: 50px;
+  }
+}
+
+.title {
+  display: inline-block;
+}
+
+.text {
+}
