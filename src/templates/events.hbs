@@ -1,7 +1,14 @@
 {{#each this}}
 <div class="event-card">
+    <div class="image-wrapper">
+        {{!-- При витягуванні картинки стається помилка можливо також треба перевірка? --}}
+        {{!-- <img src={{images[0].url}} alt={{}}> --}}
+    </div>
+    <div class="text-wrapper">
     <h2 class="title">{{name}}</h2>
-    <p class="text"></p>
-    <p class="text"></p>
+    <p class="date">{{dates.start.localDate}}</p>
+     {{!-- Треба зробити перевірку на наявність такого показника як Location у вкладеностях, бо без заданих умов за шляхом стається помилка _embedded.venues[0].name--}}
+    <p class="location"><i class="fas fa-map-marker-alt"></i> Location</p>  
+    </div>
 </div>
 {{/each}}

@@ -3,6 +3,10 @@ import activityTemplate from './templates/activity.hbs';
 import eventServices from './eventServices';
 import eventsTemplate from './templates/events.hbs';
 import './styles.scss';
+import '@fortawesome/fontawesome-free/js/fontawesome';
+import '@fortawesome/fontawesome-free/js/solid';
+import '@fortawesome/fontawesome-free/js/regular';
+import '@fortawesome/fontawesome-free/js/brands';
 
 const eventsContainer = document.querySelector('#events_container');
 async function renderEvents() {
