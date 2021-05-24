@@ -1,3 +1,4 @@
+import './index.js';
 import activityServices from './activityServices';
 import activityTemplate from './templates/activity.hbs';
 import eventServices from './eventServices';
@@ -13,7 +14,10 @@ async function renderEvents() {
   const events = await eventServices.getEvents();
   console.log(events);
   console.log(events._embedded.events);
-  eventsContainer.innerHTML = eventsTemplate(events._embedded.events);
+  const EventObject = events._embedded.events;
+  const { name, localDate } = EventObject;
+  const image = EventObject.find(event => event.images.height === 225);
+  eventsContainer.innerHTML = eventsTemplate(name, localDate, image);
 }
 renderEvents();
 
