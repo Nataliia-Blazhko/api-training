@@ -3,6 +3,7 @@ import activityServices from './activityServices';
 import activityTemplate from './templates/activity.hbs';
 import eventServices from './eventServices';
 import eventsTemplate from './templates/events.hbs';
+import './preloader.js';
 import './styles.scss';
 import '@fortawesome/fontawesome-free/js/fontawesome';
 import '@fortawesome/fontawesome-free/js/solid';
@@ -11,13 +12,45 @@ import '@fortawesome/fontawesome-free/js/brands';
 
 const eventsContainer = document.querySelector('#events_container');
 async function renderEvents() {
+  document.body.classList.remove('loaded_hiding');
+  document.body.classList.remove('loaded');
   const events = await eventServices.getEvents();
   console.log(events);
   console.log(events._embedded.events);
   const EventObject = events._embedded.events;
-  const { name, localDate } = EventObject;
-  const image = EventObject.find(event => event.images.height === 225);
-  eventsContainer.innerHTML = eventsTemplate(name, localDate, image);
+  EventObject.forEach(event => {
+    const {
+      name,
+      dates: {
+        start: { localDate },
+      },
+      _embedded: { venues },
+      images,
+    } = event;
+
+    const locations = venues[0];
+
+    const { name: location, city } = locations;
+    const place = location || city;
+
+    const image = images.find(
+      image => image.height === 225 && image.width === 305,
+    ).url;
+    eventsContainer.insertAdjacentHTML(
+      'beforeend',
+      eventsTemplate({
+        name,
+        localDate,
+        image,
+        place,
+      }),
+    );
+    document.body.classList.add('loaded_hiding');
+    window.setTimeout(function () {
+      document.body.classList.add('loaded');
+      document.body.classList.remove('loaded_hiding');
+    }, 500);
+  });
 }
 renderEvents();
 

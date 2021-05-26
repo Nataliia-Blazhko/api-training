@@ -1,14 +1,12 @@
-{{#each this}}
+{{!-- {{#each this}} --}}
 <div class="event-card">
     <div class="image-wrapper">
-        {{!-- При витягуванні картинки стається помилка можливо також треба перевірка? --}}
-        <img src={{images}}>
+        <img src={{image}}>
     </div>
     <div class="text-wrapper">
     <h2 class="title">{{name}}</h2>
-    <p class="date">{{dates.start.localDate}}</p>
-     {{!-- Треба зробити перевірку на наявність такого показника як Location у вкладеностях, бо без заданих умов за шляхом стається помилка _embedded.venues[0].name--}}
-    <p class="location"><i class="fas fa-map-marker-alt"></i> Location</p>  
+    <p class="date">{{localDate}}</p>
+    <p class="location"><i class="fas fa-map-marker-alt"></i>{{place}}</p>  
     </div>
 </div>
-{{/each}}
+{{!-- {{/each}} --}}
