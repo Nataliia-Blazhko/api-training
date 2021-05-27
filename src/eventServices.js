@@ -5,7 +5,7 @@ export default {
   async getEvents() {
     try {
       const response = await fetch(
-        `${BASE_URL}.json?size=9&countryCode=US&apikey=${API_KEY}`,
+        `${BASE_URL}.json?size=24&countryCode=AT&apikey=${API_KEY}`,
       );
       if (!response.ok) {
         throw response;

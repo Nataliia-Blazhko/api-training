@@ -1,12 +1,10 @@
-{{!-- {{#each this}} --}}
-<div class="event-card">
+<li class="event-card">
     <div class="image-wrapper">
         <img src={{image}}>
     </div>
     <div class="text-wrapper">
     <h2 class="title">{{name}}</h2>
     <p class="date">{{localDate}}</p>
-    <p class="location"><i class="fas fa-map-marker-alt"></i>{{place}}</p>  
+    <p class="location"><i class="fas fa-map-marker-alt"></i>{{place.name}}</p>  
     </div>
-</div>
-{{!-- {{/each}} --}}
+</li>

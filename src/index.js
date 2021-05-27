@@ -3,7 +3,6 @@ import activityServices from './activityServices';
 import activityTemplate from './templates/activity.hbs';
 import eventServices from './eventServices';
 import eventsTemplate from './templates/events.hbs';
-import './preloader.js';
 import './styles.scss';
 import '@fortawesome/fontawesome-free/js/fontawesome';
 import '@fortawesome/fontawesome-free/js/solid';
@@ -32,6 +31,7 @@ async function renderEvents() {
 
     const { name: location, city } = locations;
     const place = location || city;
+    console.log(place);
 
     const image = images.find(
       image => image.height === 225 && image.width === 305,
